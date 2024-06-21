@@ -43,7 +43,24 @@ io.on("connection", function (uniquesocket) {
     }
   });
 
-  
+  uniquesocket.on("move", (move) =>{
+    try{
+        if(chess.turn === "w" && uniquesocket.id !== players.white) return;
+        if(chess.turn === "b" && uniquesocket.id !== players.black) return;
+
+        const result =  chess.move(move);
+        if(result){
+            currentPlayer = chess.turn();
+            io.emit("move", move);
+            io.emit("boardState",chess.fen());
+        }else{
+           console.log("Invalid Move : ", move);
+           uniquesocket.emit("Invalid Move : ", move);
+        }
+    }catch(err){
+       console.log(err);
+    }
+  })
 });
 
 server.listen(3000, function () {
