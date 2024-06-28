@@ -63,8 +63,8 @@ const renderBoard = () => {
         e.preventDefault();
         if (draggedPiece) {
           const targetSource = {
-            row: squareElement.dataset.row,
-            col: squareElement.dataset.col,
+            row: parseInt(squareElement.dataset.row),
+            col: parseInt(squareElement.dataset.col),
           };
         }
       });
