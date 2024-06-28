@@ -59,6 +59,7 @@ io.on("connection", function (uniquesocket) {
         }
     }catch(err){
        console.log(err);
+       uniquesocket.emit("Invalid Move : ", move);
     }
   })
 });

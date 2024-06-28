@@ -66,10 +66,14 @@ const renderBoard = () => {
             row: parseInt(squareElement.dataset.row),
             col: parseInt(squareElement.dataset.col),
           };
+
+          handleMove(sourceSquare, targetSource);
         }
       });
     });
   });
+
+  boardElement.appendChild(board); //now board will be genarated in website
 };
 const handleMove = () => {};
 const getPieceUnicode = () => {};
