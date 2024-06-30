@@ -1,12 +1,12 @@
 # SERVER JS CODE
 
-- Import: express, http, socket.io, chess.js
+- Import: express, http, socket.io, chess.js    //required things for backend
 
 - Create Express app instance
 - Initialize HTTP server with Express
-- Instantiate Socket.io on HTTP server
+- Instantiate Socket.io on HTTP server //dont't forget
 
-- Create Chess object instance (chess.js)
+- Create Chess object instance (chess.js)    //we can get from npm packager website
 
 - Initialize:
     - Players object: track socket IDs, roles (white/black)
@@ -20,8 +20,9 @@
 - Render EJS template "index"
 - Title: "Custom Chess Game"
 
-- Socket.io handles connection event
-- Callback executed on client connect
+- Socket.io handles connection event    //interaction between players
+- Callback executed on client connect    //specific user
+
 - Server assigns role based on availability:
     - If slots empty:
         - Assign role (white/black)
@@ -36,10 +37,10 @@
         - Emit "playerRole" event with assigned role
         - If both slots filled, designate as spectator
         - Emit "spectatorRole" event
-    - Send initial board state using FEN notation
+    - Send initial board state using FEN notation    //FEN Notation is basically a mathematical calculation to get the state of players
 
 - Client disconnection:
-    - Remove assigned role from players object
+    - Remove assigned role from players object     // is user terminates then it should be disconnected , no load on server
 
 - Listen for "move" events:
     - Validate correct player's turn
@@ -50,4 +51,4 @@
     - If invalid:
         - Log error message
 
-- Ensure smooth gameplay and real-time updates for all connected clients.
+- Ensure smooth gameplay and real-time updates for all connected clients.      //that's where we are using socket.io
